@@ -1,0 +1,21 @@
+{
+  "name": "pstack-universal",
+  "owner": {
+    "name": "Terrane Labs"
+  },
+  "description": "Portable pstack workflows for Codex, Claude Code, and Antigravity",
+  "plugins": [
+    {
+      "name": "pstack",
+      "source": "./plugins/pstack",
+      "description": "Rigorous engineering workflows with host-neutral delegation and verification",
+      "version": "0.16.0",
+      "author": {
+        "name": "Lauren Tan; portability fork by Andrew Greene"
+      },
+      "license": "MIT",
+      "category": "developer-tools",
+      "tags": ["workflow", "review", "verification", "agent-skills"]
+    }
+  ]
+}

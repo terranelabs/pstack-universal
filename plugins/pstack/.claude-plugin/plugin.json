@@ -1,0 +1,13 @@
+{
+  "name": "pstack",
+  "displayName": "pstack",
+  "version": "0.16.0",
+  "description": "Rigorous engineering workflows with host-neutral delegation and verification.",
+  "author": {
+    "name": "Lauren Tan; portability fork by Andrew Greene"
+  },
+  "homepage": "https://github.com/terranelabs/pstack-universal",
+  "repository": "https://github.com/terranelabs/pstack-universal",
+  "license": "MIT",
+  "keywords": ["pstack", "poteto-mode", "workflow", "verification", "agent-skills"]
+}

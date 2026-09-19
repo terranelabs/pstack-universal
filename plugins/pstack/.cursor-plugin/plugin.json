@@ -1,0 +1,31 @@
+{
+	"name": "pstack",
+	"displayName": "pstack",
+	"version": "0.16.0",
+	"description": "Portable pstack fork with rigorous engineering workflows for Codex, Claude Code, Antigravity, and Cursor.",
+	"author": {
+		"name": "Lauren Tan"
+	},
+	"homepage": "https://github.com/terranelabs/pstack-universal",
+	"repository": "https://github.com/terranelabs/pstack-universal",
+	"license": "MIT",
+	"logo": "assets/logo.png",
+	"keywords": [
+		"pstack",
+		"poteto-mode",
+		"workflow",
+		"principles",
+		"agent-style",
+		"subagents",
+		"unslop"
+	],
+	"category": "developer-tools",
+	"tags": [
+		"workflow",
+		"principles",
+		"review",
+		"planning"
+	],
+	"skills": "./skills/",
+	"agents": "./agents/"
+}

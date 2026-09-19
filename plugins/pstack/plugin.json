@@ -1,0 +1,40 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "pstack",
+  "version": "0.16.0",
+  "description": "Rigorous engineering workflows with portable Agent Skills for Codex, Claude Code, and Antigravity.",
+  "author": {
+    "name": "Lauren Tan; portability fork by Andrew Greene",
+    "url": "https://github.com/cursor/plugins/tree/main/pstack"
+  },
+  "homepage": "https://github.com/terranelabs/pstack-universal",
+  "repository": "https://github.com/terranelabs/pstack-universal",
+  "license": "MIT",
+  "keywords": [
+    "pstack",
+    "poteto-mode",
+    "workflow",
+    "verification",
+    "agent-skills"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "pstack",
+        "shortDescription": "Rigorous, portable engineering workflows",
+        "longDescription": "A multi-host fork of pstack with shared Agent Skills, evidence-first playbooks, and capability-aware delegation.",
+        "developerName": "Lauren Tan and contributors",
+        "category": "Developer Tools",
+        "capabilities": ["Read", "Write", "Shell", "Delegation"],
+        "defaultPrompt": [
+          "Use poteto-mode for this engineering task.",
+          "Explain how this subsystem works.",
+          "Adversarially review these changes."
+        ],
+        "brandColor": "#F4C542",
+        "composerIcon": "./assets/logo.png",
+        "logo": "./assets/logo.png"
+      }
+    }
+  }
+}
