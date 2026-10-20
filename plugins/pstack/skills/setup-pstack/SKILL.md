@@ -5,13 +5,13 @@ description: Configure portable pstack delegation roles and panel sizes for Code
 
 # Setup pstack
 
-Read the **pstack-runtime** skill first. Write project-local configuration to
+Read the **pstack-runtime** skill first. Write project configuration to
 `.pstack/config.yaml`. This file is the one source of pstack configuration for
 Codex, Claude Code, and Antigravity.
 
 ## 1. Inspect the host
 
-Identify the active host and the delegation, model-selection, and concurrency
+Identify the active host and the delegation, model selection, and concurrency
 capabilities actually exposed in this session. Do not infer entitlements from
 marketing names or from another host's configuration.
 
@@ -25,7 +25,7 @@ unless the user asks to reset them. Missing configuration means:
 
 - every role uses `inherit-parent`;
 - arena, architect, and interrogate each request three lanes;
-- the host may lower fan-out to its concurrency limit;
+- the host may lower number of agents to its concurrency limit;
 - workflows run sequentially when delegation is unavailable or prohibited.
 
 ## 3. Resolve the budget
@@ -39,7 +39,7 @@ Supported budgets are:
 - `inherit`: keep the parent session's reasoning settings;
 - `high`: prefer the host's high reasoning option when supported;
 - `medium`: prefer the host's medium reasoning option when supported;
-- `fast`: prefer a lower-latency option when supported.
+- `fast`: prefer a faster option when supported.
 
 The budget is a preference, not permission to substitute an unavailable model.
 
@@ -51,7 +51,7 @@ Configure these roles:
 - `judgment`: design, synthesis, and ambiguous tradeoffs;
 - `prose`: consequential writing;
 - `reviewer`: adversarial verification;
-- `explorer`: read-heavy investigation.
+- `explorer`: source investigation.
 
 Each value is either `inherit-parent` or a concrete identifier reported by the
 current host. A concrete identifier may be useful on one host and ignored on
@@ -81,7 +81,7 @@ panels:
   interrogate: 3
 ```
 
-Before writing a concrete model identifier, verify it is in the host-reported
+Before writing a concrete model identifier, verify it is in the host reported
 set. Validate that `version` is `1`, every role exists, and panel counts are
 positive integers.
 
@@ -93,6 +93,11 @@ or a reduced panel because of a concurrency limit. The configuration applies
 the next time a pstack skill reads it; a new session may be needed for hosts
 that cache skill state.
 
-Optionally offer **create-verification-skill** when the project has no real-app
+Optionally offer **create-verification-skill** when the project has no real app
 verification path. Do not create it unless the user accepts or the current task
 already authorized that work.
+
+Also offer **create-formal-verification-skill** when the project has no formal
+verification for a property that tests rarely reach. Explain what the proposed
+check would cover. Create it only when the user accepts or the current task
+already authorizes that work.

@@ -9,7 +9,7 @@
       "name": "pstack",
       "source": "./plugins/pstack",
       "description": "Rigorous engineering workflows with host-neutral delegation and verification",
-      "version": "0.16.0",
+      "version": "0.17.0",
       "author": {
         "name": "Lauren Tan; portability fork by Andrew Greene"
       },

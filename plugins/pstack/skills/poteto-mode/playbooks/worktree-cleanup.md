@@ -5,7 +5,7 @@ user state and is destructive. Read **pstack-runtime** and follow the host's
 approval rules even when another pstack playbook encourages autonomy.
 
 1. **Snapshot and audit.** Record disk availability, then run
-   `scripts/worktree-audit.sh`. It reads exact paths from `git worktree list`
+   `scripts/worktree-audit.sh [-b <base-ref>] [repo-path]`. The default base is the remote default branch, then `origin/main` or `origin/master`. Pass `-b` when PRs target another branch. It reads exact paths from `git worktree list`
    and classifies size, age, merge state, uncommitted work, remote state, and PR
    state. Set `PSTACK_TRANSCRIPTS_DIR` only when the host explicitly exposes a
    transcript directory for this workspace.

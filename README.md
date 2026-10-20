@@ -4,9 +4,13 @@ This repository is a portable fork of Lauren Tan's
 [pstack](https://github.com/cursor/plugins/tree/main/pstack). It keeps one shared
 skill tree and packages it for Codex, Claude Code, and Google Antigravity.
 
-The fork tracks upstream pstack `0.15.2` at commit
-`032be146865d973682535de75f2287da438550bf`. The original MIT license and
+The fork tracks upstream pstack `0.15.28` at commit
+`ddf824aff1e55ba14bd666b30bce3fc69962abe6`. The original MIT license and
 attribution are preserved in `plugins/pstack/LICENSE` and `UPSTREAM.md`.
+
+This update adds the upstream formal verification workflows and the new help
+skills. It also includes fixes for PR review pagination and plan checks. Fork
+version `0.17.0` keeps the shared configuration and host capability rules.
 
 ## What changed
 
@@ -67,7 +71,7 @@ From the target project, run:
 /absolute/path/to/pstack-universal/scripts/install-antigravity.sh .
 ```
 
-The installer creates relative links under `.agents/skills/`. Use `--copy` if
+The installer creates absolute links under `.agents/skills/`. Use `--copy` if
 the target environment cannot follow symbolic links. Restart Antigravity, then
 confirm the skills with `/skills`.
 

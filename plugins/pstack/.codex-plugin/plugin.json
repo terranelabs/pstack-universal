@@ -1,6 +1,6 @@
 {
   "name": "pstack",
-  "version": "0.16.0",
+  "version": "0.17.0",
   "description": "Rigorous engineering workflows with portable Agent Skills for Codex, Claude Code, and Antigravity.",
   "author": {
     "name": "Lauren Tan; portability fork by Andrew Greene",

@@ -32,7 +32,7 @@ this task and the user has asked to mine their history. Never glob across user
 or workspace history. If scoped history is unavailable, use the current
 conversation and direct user answers.
 
-Survey only the approved scope for recurring patterns. When native delegation is available and permitted, run multiple read-only workers across non-overlapping slices. Otherwise mine sequentially. Each pass returns a short structured list with evidence pointers. Default signals worth hunting:
+Survey only the approved scope for recurring patterns. When native delegation is available and permitted, give each worker a separate slice and forbid writes. Otherwise mine sequentially. Each worker reads only the scoped history supplied by the parent and returns a short structured list with evidence pointers. Choose reasoning and speed settings only when the host exposes them, as described in the Subagents section of **poteto-mode**. Default signals worth hunting:
 
 - Response preferences (length, tone, format, "dumb it down" corrections)
 - Delegation habits (subagents, models, specialized workflows, parallelism)

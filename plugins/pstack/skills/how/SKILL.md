@@ -8,39 +8,40 @@ description: "Use for \"how does X work\", code walkthroughs before changing som
 Explore the codebase to answer "how does X work?" questions. Produce architectural explanations at the level of a senior engineer onboarding onto a subsystem, enough to build a working mental model, not so much that it reads like annotated source code.
 
 Read **pstack-runtime** before delegating. Use `.pstack/config.yaml` role
-preferences only when the current host supports them.
+preferences only when the current host supports them. Explorers use the
+`explorer` role. Explainers use `judgment`. Missing configuration means
+`inherit-parent`. Use only model identifiers the host reports as available.
+If an override is rejected, inherit the parent model and report the fallback.
+Choose reasoning and speed settings only when the host exposes them, as
+described in the Subagents section of **poteto-mode**. Every worker has a scope
+that forbids file and external writes. If delegation is unavailable or
+prohibited, perform the same steps in the parent session.
 
-## Step 1. Assess Complexity
+## 1. Assess complexity
 
 If the scope is ambiguous, state your interpretation and explore. The user can redirect.
 
-- **Simple** (a single module, a small utility, a narrow question such as "how does function X work"): no explorers. One explainer explores and explains in a single pass. Go to Step 2b.
-- **Complex** (a subsystem spanning multiple files or services, a cross-cutting feature, a full architectural overview): spawn parallel explorers first, then hand off to the explainer. Go to Step 2a.
+- **Simple** (a single module, a small utility, a narrow question such as "how does function X work"): use one explainer that explores and explains in one pass. Build its prompt from `references/explainer-prompt.md` without the explorer findings section. Go to step 4.
+- **Complex** (a subsystem spanning multiple files or services, a cross-cutting feature, a full architectural overview): go to step 2.
 
 When in doubt, take the simple path.
 
-## Step 2a. Explore (complex questions only)
+## 2. Explore (complex only)
 
-Decompose the question into 2 to 4 exploration angles, each a distinct slice of the subsystem. When native delegation is available and permitted, launch the explorers concurrently with read-only scopes. Use the configured `explorer` role when supported; otherwise inherit the parent model. If delegation is unavailable, investigate the angles sequentially.
+Decompose the question into 2 to 4 angles, each a distinct slice of the
+subsystem. Launch the explorers concurrently up to the host's concurrency
+limit. Give each `references/explorer-prompt.md` with its angle filled in.
+Investigate any remaining angles sequentially.
 
-Each explorer gets the prompt in `references/explorer-prompt.md` with its angle filled in. Then go to Step 3.
+## 3. Synthesize (complex only)
 
-## Step 2b. Direct Explain (simple questions)
+Once all explorers have returned, use one explainer with
+`references/explainer-prompt.md` and every explorer's findings filled in.
 
-Use one read-only worker that explores and explains in one pass when native delegation is available. Use the configured `judgment` role when supported; otherwise inherit the parent model. If delegation is unavailable, do this pass in the parent session.
+## 4. Present
 
-Build its prompt from `references/explainer-prompt.md` without the explorer-findings section. Go to Step 4.
+Present the explainer's output. Light edits for clarity or context from the conversation are fine. Do not substantially rewrite it.
 
-## Step 3. Synthesize (complex questions only)
-
-Once all explorers have returned, use one read-only synthesis worker when native delegation is available. Otherwise synthesize in the parent session. Use the configured `judgment` role only when the host accepts model overrides.
-
-Build its prompt from `references/explainer-prompt.md` with every explorer's findings filled in.
-
-## Step 4. Present
-
-Present the explainer's output to the user. Light edits for clarity or context from the conversation are fine. Do not substantially rewrite it.
-
-## Output Format
+## Output format
 
 The explanation uses the sections defined in `references/explainer-prompt.md`, dropping any that do not apply: Overview, Key Concepts, How It Works, Where Things Live, Gotchas.
