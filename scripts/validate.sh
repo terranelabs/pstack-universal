@@ -6,6 +6,7 @@ repo_root=$(CDPATH= cd -- "$script_dir/.." && pwd -P)
 plugin_dir="$repo_root/plugins/pstack"
 
 node "$script_dir/validate.mjs"
+node --test "$script_dir/validate.test.mjs"
 
 if command -v claude >/dev/null 2>&1; then
   claude plugin validate --strict "$plugin_dir"
